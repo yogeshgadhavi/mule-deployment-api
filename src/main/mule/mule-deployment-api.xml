@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="03903979-2312-4676-a2d8-1055563d006c" >
+		<http:listener-connection host="localhost" port="8096" />
+	</http:listener-config>
+	<global-property doc:name="Global Property" doc:id="88ed2964-6283-449f-a698-2b6c73d77e85" name="environment" value="${environment}" />
+	<configuration-properties doc:name="Configuration properties" doc:id="1682c03b-de9f-49d3-b0f2-3837a93ded34" file="environment/mule-${environment}.properties" />
+	<flow name="mule-deployment-apiFlow" doc:id="ebe401ef-b7a9-40b9-aebe-e8e09fd08e51" >
+		<http:listener doc:name="Listener" doc:id="1e1debe2-9188-4315-9fe0-4e9018aa748a" config-ref="HTTP_Listener_config" path="/api/*"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c31e2d61-fb95-44d3-8542-c4bbeba92ccc" message="This deployed on : ${mule.environment}"/>
+	</flow>
+</mule>
