@@ -6,9 +6,8 @@ pipeline {
         bat 'mvn install -Denvironment=dev'
       }
     }
-    }
-  
-  stage('Upload Artifact') {
+    
+     stage('Upload Artifact') {
             steps {
                 withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
                                  script {
@@ -20,4 +19,7 @@ pipeline {
                 }
             }
         }
+    }
+  
+ 
 }
