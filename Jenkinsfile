@@ -11,7 +11,7 @@ pipeline {
             steps {
                 
                                  script {
-                                        def server = Artifactory.server 'internal.repo'
+                                        def server = Artifactory.server 'ART-2'
                                         def uploadSpec = """{
                                             "files": [
                                                 {
