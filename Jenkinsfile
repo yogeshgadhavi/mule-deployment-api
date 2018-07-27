@@ -6,7 +6,7 @@ pipeline {
         bat 'mvn install -Denvironment=dev'
       }
     }
-    
+  }
      
  
 }
