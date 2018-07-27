@@ -11,9 +11,21 @@ pipeline {
             steps {
                 
                                  script {
-                                        def server = Artifactory.newServer url: 'file:///C:/ANZ/Repositories/', credentialsId: 'mulesoft-artifactory'
-                                        server.bypassProxy = true
-                                        def buildInfo = server.upload
+                                        def server = Artifactory.server 'internal.repo'
+                                        def uploadSpec = """{
+                                            "files": [
+                                                {
+                                                    "pattern": "**/target/*.jar",
+                                                    "recursive": "false",
+                                                    "target": "mulesoft/",
+                                                    "flat" : "false"
+                                                }
+                                            ]
+                                        }"""
+
+                                        def buildInfo1 = server.upload(uploadSpec)
+                                        buildInfo1.retention maxBuilds: 10
+                                        server.publishBuildInfo(buildInfo1)
                                         }
                     
                 }
