@@ -77,12 +77,12 @@
     
     
    <distributionManagement>
-       <repository>
-         <id>internal.repo</id>
-         <name>Internal repo</name>
-         <url>file:///C:/ANZ/Repositories/</url>
+      <repository>
+        <id>ART-2</id>
+        <name>mulesoft-release</name>
+        <url>https://cfrhel74arpoc01.jfrog.io/cfrhel74arpoc01/mulesoft-release</url>
        </repository>
-   </distributionManagement>
+	</distributionManagement>
     
     <profiles>
      
